@@ -359,9 +359,12 @@ export default function App() {
               <div className="w-4 h-4 bg-[#0a0e1a] rotate-45"></div>
             </div>
             <div>
-              <span className={`text-xl font-bold tracking-tight ${darkMode ? "text-white" : "text-slate-900"}`}>
-                StockSense <span className="text-[#00d084]">AI</span>
-              </span>
+              <div className="flex items-baseline gap-1.5">
+                <span className={`text-xl font-bold tracking-tight ${darkMode ? "text-white" : "text-slate-900"}`}>
+                  StockSense <span className="text-[#00d084]">AI</span>
+                </span>
+                <span className="text-[10px] text-slate-500 font-medium">by Hamzah</span>
+              </div>
               <span className="text-[9px] block font-mono text-[#00d084] tracking-wider uppercase">AI Agent · Real Data · Smarter Decisions</span>
             </div>
           </div>
@@ -989,7 +992,7 @@ export default function App() {
       <footer className={`py-4 sm:h-12 border-t flex flex-col sm:flex-row items-center justify-between gap-2 px-6 sm:px-8 text-[10px] mt-12 ${
         darkMode ? "bg-[#0a0e1a] border-[#1f2937] text-[#4b5563]" : "bg-slate-100 border-slate-200 text-slate-500"
       }`}>
-        <span>Built with Gemini AI · Google x Kaggle 5-Day AI Agents Intensive · Capstone Project 2026</span>
+        <span>Built by Hamzah with Gemini AI · Google x Kaggle 5-Day AI Agents Intensive · Capstone Project 2026</span>
         <div className="flex items-center gap-4">
           <button 
             onClick={() => setShowHowItWorks(true)}
