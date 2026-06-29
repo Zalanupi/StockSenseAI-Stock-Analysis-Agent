@@ -125,7 +125,19 @@ Market Data →  Yahoo Finance public API (/v8/finance/chart/)
 Deployment  →  Render (full-stack)
 ```
 ---
-## Deploying to Render
+## 🚀 StockSense AI: Architecture & Key Files
+StockSense AI uses a robust full-stack client-agent architecture to keep third-party endpoints and API keys isolated on a secure backend while rendering a highly visual, responsive dashboard on the frontend.
+
+1. server.ts (The Agent Brain & Multi-Tool Coordinator)
+- Implements a custom sequential multi-tool execution loop using the latest official @google/genai SDK.
+- Houses system prompts instructing the model on sequential reasoning: Company name, Ticker resolution, Market/News retrieval report generation.
+- Configures an active function-calling loop (app.post('/api/chat')) that dynamically resolves, fetches, and returns structured analysis back to Gemini.
+  
+2. src/App.tsx (Interactive Trace Terminal & Dashboard)
+- Renders the interactive terminal allowing users to visually inspect each step of the agent's reasoning.
+- Integrates interactive Recharts visualization, dark mode toggles, and clean dashboard layout components.
+---
+## 🚀 Deploying to Render
 
 1. Fork this repo
 2. Create a new Web Service on render.com
