@@ -9,16 +9,25 @@ const app = express();
 app.use(express.json());
 
 const PORT = Number(process.env.PORT || 3000);
-const apiKey = process.env.GEMINI_API_KEY;
 
-const ai = new GoogleGenAI({
-  apiKey: apiKey,
-  httpOptions: {
-    headers: {
-      'User-Agent': 'aistudio-build',
+let aiInstance: GoogleGenAI | null = null;
+function getAIClient(): GoogleGenAI {
+  if (!aiInstance) {
+    const key = process.env.GEMINI_API_KEY;
+    if (!key) {
+      throw new Error("GEMINI_API_KEY is not configured on the server. Please add it via Settings.");
     }
+    aiInstance = new GoogleGenAI({
+      apiKey: key,
+      httpOptions: {
+        headers: {
+          'User-Agent': 'aistudio-build',
+        }
+      }
+    });
   }
-});
+  return aiInstance;
+}
 
 // Robust helper function to execute Gemini requests with retry logic and model fallback
 async function callGeminiWithFallback(aiClient: any, params: any, retries = 2, delayMs = 1000): Promise<any> {
@@ -402,9 +411,12 @@ app.post("/api/chat", async (req, res) => {
     return res.status(400).json({ error: "Messages array is required." });
   }
   
-  if (!apiKey) {
+  let ai;
+  try {
+    ai = getAIClient();
+  } catch (err: any) {
     return res.status(500).json({ 
-      error: "GEMINI_API_KEY is not configured on the server. Please add it via Settings > Secrets." 
+      error: err.message || "GEMINI_API_KEY is not configured on the server. Please configure it in your Vercel Project Settings." 
     });
   }
 
