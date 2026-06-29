@@ -124,7 +124,16 @@ Grounding   →  Gemini native Google Search tool
 Market Data →  Yahoo Finance public API (/v8/finance/chart/)
 Deployment  →  Render (full-stack)
 ```
+---
+## Deploying to Render
 
+1. Fork this repo
+2. Create a new Web Service on render.com
+3. Connect your GitHub repo
+4. Set environment variable: GEMINI_API_KEY=your_key
+5. Build command: npm run build
+6. Start command: npm start
+7. Deploy — live in ~2 mins
 ---
 
 ## 🔗 Links
