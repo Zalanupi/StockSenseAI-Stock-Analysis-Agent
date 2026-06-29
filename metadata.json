@@ -1,0 +1,6 @@
+{
+  "name": "StockSense AI",
+  "description": "Conversational AI stock analysis agent that resolves tickers, fetches live market price histories and recent news via Google Search grounding, and provides structured recommendation reports.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
